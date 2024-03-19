@@ -16,7 +16,7 @@ router.get("/:id", async (req, res) => {
   let query = { _id: new ObjectId(req.params.id) };
   let oneSkillResults = await SKILLS_COLLECTION.findOne(query);
 
-  if (!result) res.send("Not found").status(404);
+  if (!oneSkillResults) res.send("Not found").status(404);
   else res.send(oneSkillResults).status(200);
 });
 
