@@ -16,16 +16,16 @@ router.get("/:id", async (req, res) => {
   let query = { _id: new ObjectId(req.params.id) };
   let onePostResult = await POST_COLLECTION.findOne(query);
 
-  !onepostResult
+  (!onepostResult)
     ? res.send("not found").status(404)
     : res.send(onePostResult).status(200);
 });
 
-//Endpoint to add a post (post details to add-->name, link, description,image )
+//Endpoint to add a post (post details to add--> heading, content,image )
 router.post("/", async (req, res) => {
   try {
     let newpost = {
-      title: req.body.title,
+      heading: req.body.heading,
       content: req.body.content,
       image: urlencoded,
     };
@@ -42,8 +42,8 @@ router.patch("/:id", async (req, res) => {
     const query = { _id: new ObjectId(req.params.id) };
     const update = {
       $set: {
-        name: req.body.name,
-        description: req.body.description,
+        heading: req.body.heading,
+        content: req.body.content,
         image: urlencoded,
       },
     };
