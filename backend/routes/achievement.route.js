@@ -19,8 +19,9 @@ try {
         content: req.body.content,
         certImage: url
     }
-    let 
+    let newAchieveResult = await ACHIEVEMENT_COLLECTION.insertOne(newAchieve);
+    res.send.apply(newAchieveResult).status(201);
 } catch (error) {
-    
+    console.error(error);
 }
 });
