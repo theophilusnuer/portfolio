@@ -27,8 +27,8 @@ router.post("/", async (req, res) => {
       skill: req.body.skill,
       proficiency: req.body.proficiency,
     };
-    let newSkillResult = await SKILLS_COLLECTION.insertOne(newSkill);
-    res.send(newSkillResult).status(201);
+    let newSkillResults = await SKILLS_COLLECTION.insertOne(newSkill);
+    res.send(newSkillResults).status(201);
   } catch (error) {
     console.error(error);
   }
@@ -44,8 +44,8 @@ router.patch("/:id", async (req, res) => {
         proficiency: req.body.proficiency,
       },
     };
-    let updateResult = await SKILLS_COLLECTION.updateOne(query, update);
-    res.send(updateResult).status(201);
+    let updateResults = await SKILLS_COLLECTION.updateOne(query, update);
+    res.send(updateResults).status(201);
   } catch (error) {
     console.error(error);
   }
@@ -55,8 +55,8 @@ router.patch("/:id", async (req, res) => {
 router.delete('/:id', async (req, res)=>{
 try {
   const query = { _id: new ObjectId(req.params.id) };
-    let deleteSkillResult = await SKILLS_COLLECTION.deleteOne(query);
-    res.send(deleteSkillResult).status(202);
+    let deleteSkillResults = await SKILLS_COLLECTION.deleteOne(query);
+    res.send(deleteSkillResults).status(202);
 } catch (error) {
   console.error(error)
 }

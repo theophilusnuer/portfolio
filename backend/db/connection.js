@@ -1,8 +1,8 @@
-import { MongoClient,ServerApiVersion } from "mongodb";
+import { MongoClient, ServerApiVersion } from "mongodb";
 
 const uri = process.env.ATLAS_URI || ""
-const client = new MongoClient (uri, {
-    serverApi:{
+const client = new MongoClient(uri, {
+    serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
         deprecationErrors: true,
@@ -10,13 +10,13 @@ const client = new MongoClient (uri, {
 });
 const DATABASE_NAME = 'portfolio_db';
 
-try{
-await client.connect ();
+try {
+    await client.connect();
+    await client.db('admin').command({ ping: 1 })
+    console.log('Mongodb Connection successful')
 
-await client.db('admin').command({ping:1})
-console.log('Mongodb Connection successful')
-} catch(error) {
-console.log(error);
+} catch (error) {
+    console.log(error);
 }
 
 let db = client.db(DATABASE_NAME);
