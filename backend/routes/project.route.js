@@ -23,7 +23,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     let newProject = {
-      name: req.body.name,
+      title: req.body.title,
       description: req.body.description,
     //   image: urlencoded,
     };
@@ -40,7 +40,7 @@ router.patch("/:id", async (req, res) => {
     const query = { _id: new ObjectId(req.params.id) };
     const update = {
       $set: {
-        name: req.body.name,
+        title: req.body.title,
         description: req.body.description,
         // image: urlencoded,
       },
