@@ -15,9 +15,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const query = { _id: new ObjectId(req.params.id) };
   let oneAchieveResult = await ACHIEVEMENT_COLLECTION.findOne(query);
-  !oneAchieveResult
-    ? res.send("Not Found").status(404)
-    : res.send(oneAchieveResult).status(200);
+  (!oneAchieveResult) ? res.send("Not Found").status(404) : res.send(oneAchieveResult).status(200);
 });
 
 //post an achievement(details--> title, content and cert image)
@@ -46,7 +44,8 @@ router.patch("/:id", async (req, res) => {
         certImage: url,
       },
     };
-    let updateResults = await ACHIEVEMENT_COLLECTION.updateOne(query, update);
+    let achieveUpdateResults = await ACHIEVEMENT_COLLECTION.updateOne(query, update);
+    res.send(achieveUpdateResults).status(201);
   } catch (error) {
     console.error(error);
   }
@@ -62,3 +61,5 @@ try {
     console.error(error);
 }
 });
+
+export default  router;

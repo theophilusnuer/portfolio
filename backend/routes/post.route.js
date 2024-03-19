@@ -16,9 +16,7 @@ router.get("/:id", async (req, res) => {
   let query = { _id: new ObjectId(req.params.id) };
   let onePostResult = await POST_COLLECTION.findOne(query);
 
-  (!onepostResult)
-    ? res.send("not found").status(404)
-    : res.send(onePostResult).status(200);
+  (!onePostResult) ? res.send("not found").status(404) : res.send(onePostResult).status(200);
 });
 
 //Endpoint to add a post (post details to add--> heading, content,image )
