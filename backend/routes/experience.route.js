@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 
 //get a single experience by id
 router.get('/:id', async (req, res) => {
-    const query = { _id: new ObjectId(req.params.id) };
+    const query = { _id: new ObjectId(req.params.id)};
     let oneExperienceResult = await EXPERIENCE_COLLECTION.findOne(query);
 
     (!oneExperienceResult) ? res.send('Not found').status(404) : res.send(oneExperienceResult).status(200);
@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
             role: req.body.role,
             date: req.body.date,
         };
-        let newExperienceResult = await EXPERIENCE_COLLECTION.insertOne(query, newExperience);
+        let newExperienceResult = await EXPERIENCE_COLLECTION.insertOne(newExperience);
         res.send(newExperienceResult);
     } catch (error) {
         console.error(error)

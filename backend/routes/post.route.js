@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
     let newpost = {
       heading: req.body.heading,
       content: req.body.content,
-      image: urlencoded,
+      // image: urlencoded,
     };
     let newPostResult = await POST_COLLECTION.insertOne(newpost);
     res.send(newPostResult).status(201);
@@ -42,7 +42,7 @@ router.patch("/:id", async (req, res) => {
       $set: {
         heading: req.body.heading,
         content: req.body.content,
-        image: urlencoded,
+        // image: urlencoded,
       },
     };
     let postUpdateResult = await POST_COLLECTION.updateOne(query,update);

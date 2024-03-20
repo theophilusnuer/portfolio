@@ -24,10 +24,10 @@ router.post("/", async (req, res) => {
     let newAchieve = {
       title: req.body.title,
       content: req.body.content,
-      certImage: url,
+      // certImage: url,
     };
     let newAchieveResult = await ACHIEVEMENT_COLLECTION.insertOne(newAchieve);
-    res.send.apply(newAchieveResult).status(201);
+    res.send(newAchieveResult).status(201);
   } catch (error) {
     console.error(error);
   }
@@ -41,7 +41,7 @@ router.patch("/:id", async (req, res) => {
       $set: {
         title: req.body.title,
         content: req.body.content,
-        certImage: url,
+        // certImage: url,
       },
     };
     let achieveUpdateResults = await ACHIEVEMENT_COLLECTION.updateOne(query, update);
